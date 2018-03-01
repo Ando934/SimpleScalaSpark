@@ -9,7 +9,7 @@ import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions._
 
-object ScalaSparkKafka {
+object Main {
   def main(args: Array[String]) {
     if (args.length < 3) {
       //System.err.println("Usage: ScalaSparkKafka env inputPath outputPath")
