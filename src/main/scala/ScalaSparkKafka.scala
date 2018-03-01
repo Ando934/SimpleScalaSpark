@@ -12,6 +12,7 @@ import org.apache.spark.sql.functions._
 object ScalaSparkKafka {
   def main(args: Array[String]) {
     if (args.length < 3) {
+      //System.err.println("Usage: ScalaSparkKafka env inputPath outputPath")
       System.err.println("Usage: ScalaSparkKafka env inputPath outputPath")
       System.exit(1)
     }
