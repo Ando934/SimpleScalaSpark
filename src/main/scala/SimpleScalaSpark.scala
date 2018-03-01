@@ -1,7 +1,7 @@
 /****
   *
   *  Poc project - main class
-  *  spark-submit --class SimpleScalaSpark $HOME/spark/lib/simplescalaspark_2.11-0.1.jar \
+  *  spark-submit --class main.scala.Main $HOME/spark/lib/simplescalaspark_2.11-0.1.jar \
   *  prd hdfs:///user/tandrian/ingestion/input/shakespeare.txt /tmp/shakespeareWordCount1
   */
 package main.scala
