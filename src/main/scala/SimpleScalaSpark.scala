@@ -6,12 +6,9 @@
   */
 package main.scala
 
-import com.typesafe.config.ConfigFactory
-import org.apache.spark.{SparkConf, SparkContext}
-
 object SimpleScalaSpark {
 
-  def main(args: Array[String]) {
+  /*def main(args: Array[String]) {
     // get args
     val executionEnvironment = args(0)
     val inputPath = args(1)
@@ -37,6 +34,6 @@ object SimpleScalaSpark {
     System.out.println("Total words: " + counts.count());
     //counts.saveAsTextFile("/tmp/shakespeareWordCount1");
     counts.saveAsTextFile(outputPath);
-  }
+  }*/
 
 }
