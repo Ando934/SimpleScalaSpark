@@ -26,7 +26,7 @@ object Main {
 
     counts.foreach(println)
     System.out.println("Total words: " + counts.count());
-    counts.saveAsTextFile("/tmp/shakespeareWordCount");
+    counts.saveAsTextFile("/tmp/shakespeareWordCount1");
   }
 
 }
