@@ -6,9 +6,12 @@
   */
 package main.scala
 
-object SimpleScalaSpark {
+import com.typesafe.config.ConfigFactory
+import org.apache.spark.{SparkConf, SparkContext}
 
-  /*def main(args: Array[String]) {
+object Main {
+
+  def main(args: Array[String]) {
     // get args
     val executionEnvironment = args(0)
     val inputPath = args(1)
@@ -16,10 +19,11 @@ object SimpleScalaSpark {
     // init props
     val props = ConfigFactory.load()
     //Create a SparkContext to initialize Spark
+
     val conf = new SparkConf()
+    val sc = new SparkContext(conf)
     conf.setMaster(props.getConfig(executionEnvironment).getString("executionMode"))
     conf.setAppName("Word Count")
-    val sc = new SparkContext(conf)
 
     // Load the text into a Spark RDD, which is a distributed representation of each line of text
     //val textFile = sc.textFile("hdfs:///user/tandrian/ingestion/input/shakespeare.txt")
@@ -34,6 +38,6 @@ object SimpleScalaSpark {
     System.out.println("Total words: " + counts.count());
     //counts.saveAsTextFile("/tmp/shakespeareWordCount1");
     counts.saveAsTextFile(outputPath);
-  }*/
+  }
 
 }
