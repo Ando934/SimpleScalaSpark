@@ -1,3 +1,5 @@
+package main.scala.Kafka
+
 object KafkaProducer extends App {
 
   import java.util.Properties

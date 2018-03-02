@@ -1,3 +1,5 @@
+package main.scala.Kafka
+
 import java.util
 
 import org.apache.kafka.clients.consumer.KafkaConsumer
