@@ -9,7 +9,7 @@ package main.scala
 import com.typesafe.config.ConfigFactory
 import org.apache.spark.{SparkConf, SparkContext}
 
-object Main {
+object SimpleScalaSpark {
 
   def main(args: Array[String]) {
     // get args
