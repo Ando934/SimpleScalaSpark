@@ -1,6 +1,7 @@
 package main.scala.spark.streaming
 
 import org.apache.spark.SparkConf
+import org.apache.spark.rdd.RDD
 import org.apache.spark.storage.StorageLevel
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
@@ -22,7 +23,9 @@ object NetworkWordCount {
       System.exit(1)
     }
 
-
+    def isEmpty[T](rdd : RDD[T]) = {
+      rdd.take(1).length == 0
+    }
     // Create the context with a 1 second batch size
     val sparkConf = new SparkConf().setAppName("NetworkWordCount")
     val ssc = new StreamingContext(sparkConf, Seconds(1))
@@ -35,6 +38,7 @@ object NetworkWordCount {
     val words = lines.flatMap(_.split(" "))
     val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _)
     //wordCounts.print()
+
     wordCounts.saveAsTextFiles("/tmp/count.txt");
     ssc.start()
     ssc.awaitTermination()
