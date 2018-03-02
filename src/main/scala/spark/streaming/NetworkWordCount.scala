@@ -13,7 +13,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
   * To run this on your local machine, you need to first run a Netcat server
   *    `$ nc -lk 9999`
   * and then run the example
-  *    `$ bin/run-example org.apache.spark.examples.streaming.NetworkWordCount localhost 9999`
+  *    spark-submit --master yarn  --deploy-mode client --driver-memory 512m  --executor-memory 1g --executor-cores 1  --num-executors 1 --class main.scala.spark.streaming.NetworkWordCount simplescalaspark_2.11-0.1.jar   localhost 9999
   */
 object NetworkWordCount {
   def main(args: Array[String]) {
@@ -34,7 +34,8 @@ object NetworkWordCount {
     val lines = ssc.socketTextStream(args(0), args(1).toInt, StorageLevel.MEMORY_AND_DISK_SER)
     val words = lines.flatMap(_.split(" "))
     val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _)
-    wordCounts.print()
+    //wordCounts.print()
+    wordCounts.saveAsTextFiles("/tmp/count.txt", "txt");
     ssc.start()
     ssc.awaitTermination()
   }
