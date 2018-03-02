@@ -4,7 +4,7 @@
   *  spark-submit --class main.scala.Main $HOME/spark/lib/simplescalaspark_2.11-0.1.jar \
   *  prd hdfs:///user/tandrian/ingestion/input/shakespeare.txt /tmp/shakespeareWordCount1
   */
-package main.scala.Spark
+package main.scala.spark
 
 import com.typesafe.config.ConfigFactory
 import org.apache.spark.{SparkConf, SparkContext}
