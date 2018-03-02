@@ -35,7 +35,7 @@ object NetworkWordCount {
     val words = lines.flatMap(_.split(" "))
     val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _)
     //wordCounts.print()
-    wordCounts.saveAsTextFiles("/tmp/count.txt", "txt");
+    wordCounts.saveAsTextFiles("/tmp/count.txt");
     ssc.start()
     ssc.awaitTermination()
   }
