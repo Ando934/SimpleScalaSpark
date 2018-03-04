@@ -25,13 +25,19 @@ object KafkaStreamingTest {
     //Create the Streaming DataFrame
     val streamingDataFrame = spark.readStream.schema(mySchema).csv("/user/tandrian/ingestion/streaming/")
 
-    // Publish stream to kafka
+    streamingDataFrame.writeStream
+      .format("kafka")
+      .option("kafka.bootstrap.servers", "host1:port1,host2:port2")
+      .option("topic", "test")
+      .start()
+
+    /*// Publish stream to kafka
     streamingDataFrame.selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
       .writeStream
       .format("kafka")
       .option("topic", "test")
       .option("kafka.bootstrap.servers", "192.168.33.204:9092")
-      .option("checkpointLocation", "/home/tandrian/spark/checkpoint")
+      .option("checkpointLocation", "/home/tandrian/spark/checkpoint")*/
 
     // Suscribe stream from Kafka
 
@@ -41,6 +47,7 @@ object KafkaStreamingTest {
       .option("kafka.bootstrap.servers", "192.168.33.204:9092")
       .option("subscribe", "test")
       .load()
+
 
     // Print
     /*df.writeStream
