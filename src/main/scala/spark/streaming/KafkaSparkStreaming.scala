@@ -31,6 +31,7 @@ object KafkaSparkStreaming {
       PreferConsistent,
       ConsumerStrategies.Subscribe[String, String](topics, kafkaParams, offsets))
 
+
     dstream.foreachRDD { rdd =>
       // Get the offset ranges in the RDD
       val offsetRanges = rdd.asInstanceOf[HasOffsetRanges].offsetRanges
