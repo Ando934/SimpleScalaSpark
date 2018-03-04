@@ -1,8 +1,13 @@
 package main.scala.spark.streaming
+/*
+ * /usr/hdp/2.6.3.0-235/spark2/bin/spark-submit --master yarn  --deploy-mode client --driver-memory 512m  --executor-memory 1g --executor-cores 1  --num-executors 1 --class main.scala.spark.streaming.KafkaSparkStreaming simplescalaspark_2.11-0.1.jar
+ */
 
 import org.apache.spark.SparkContext
 import org.apache.spark.streaming._
 import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
+import org.apache.kafka.common.serialization.StringDeserializer
+
 
 object KafkaSparkStreaming {
   def main(args: Array[String]): Unit = {
@@ -14,7 +19,7 @@ object KafkaSparkStreaming {
     //val preferredHosts = LocationStrategies.PreferConsistent
     //val topics = List("topic1", "topic2", "topic3")
     val topics = List("test")
-    import org.apache.kafka.common.serialization.StringDeserializer
+
     val kafkaParams = Map[String, Object](
       "bootstrap.servers" -> "localhost:9092",
       "key.deserializer" -> classOf[StringDeserializer],
