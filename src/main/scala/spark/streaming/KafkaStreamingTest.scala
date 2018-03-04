@@ -53,6 +53,7 @@ object KafkaStreamingTest {
       .writeStream
       .outputMode("append")
       .format("parquet")
+      .option("path", "/user/tandrian/parquet")
       .option("checkpointLocation", "checkpoint")
       .start()
       .awaitTermination()
