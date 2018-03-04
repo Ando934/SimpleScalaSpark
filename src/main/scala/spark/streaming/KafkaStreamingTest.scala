@@ -1,4 +1,4 @@
-package spark.streaming
+package main.scala.spark.streaming
 
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.spark.SparkContext
