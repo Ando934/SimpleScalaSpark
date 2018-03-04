@@ -6,7 +6,6 @@ package main.scala.spark.streaming
 import org.apache.spark.SparkContext
 import org.apache.spark.streaming._
 import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
-import org.apache.kafka.common.serialization.StringDeserializer
 
 
 object KafkaSparkStreaming {
@@ -22,8 +21,6 @@ object KafkaSparkStreaming {
 
     val kafkaParams = Map[String, Object](
       "bootstrap.servers" -> "localhost:9092",
-      "key.deserializer" -> classOf[StringDeserializer],
-      "value.deserializer" -> classOf[StringDeserializer],
       "group.id" -> "use_a_separate_group_id_for_each_stream",
       "auto.offset.reset" -> "latest",
       "enable.auto.commit" -> (false: java.lang.Boolean)
