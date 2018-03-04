@@ -3,6 +3,7 @@ package main.scala.spark.streaming
  * /usr/hdp/2.6.3.0-235/spark2/bin/spark-submit --master yarn  --deploy-mode client --driver-memory 512m  --executor-memory 1g --executor-cores 1  --num-executors 1 --class main.scala.spark.streaming.KafkaSparkStreaming simplescalaspark_2.11-0.1.jar
  */
 
+import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.spark.SparkContext
 import org.apache.spark.streaming._
 import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
@@ -21,6 +22,8 @@ object KafkaSparkStreaming {
 
     val kafkaParams = Map[String, Object](
       "bootstrap.servers" -> "localhost:9092",
+      "key.deserializer" -> classOf[StringDeserializer],
+      "value.deserializer" -> classOf[StringDeserializer],
       "group.id" -> "use_a_separate_group_id_for_each_stream",
       "auto.offset.reset" -> "latest",
       "enable.auto.commit" -> (false: java.lang.Boolean)
