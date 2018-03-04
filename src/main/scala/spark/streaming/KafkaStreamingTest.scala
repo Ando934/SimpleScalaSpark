@@ -24,15 +24,13 @@ object KafkaStreamingTest {
 
     //Create the Streaming DataFrame
     val streamingDataFrame = spark.readStream.schema(mySchema).csv("/user/tandrian/ingestion/streaming/")
-
-    streamingDataFrame.printSchema()
-    println(streamingDataFrame.collect())
-
-    streamingDataFrame.writeStream
+      .selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
+      .writeStream
       .format("kafka")
       .option("kafka.bootstrap.servers", "192.168.33.204:9092")
       .option("topic", "test")
       .start()
+      .awaitTermination(1000)
 
     /*// Publish stream to kafka
     streamingDataFrame.selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
