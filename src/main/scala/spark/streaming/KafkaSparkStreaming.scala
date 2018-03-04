@@ -1,7 +1,7 @@
 package main.scala.spark.streaming
 
-import org.apache.spark.streaming._
 import org.apache.spark.SparkContext
+import org.apache.spark.streaming._
 
 
 object KafkaSparkStreaming {
