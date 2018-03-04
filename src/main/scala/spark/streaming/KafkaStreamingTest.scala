@@ -10,7 +10,6 @@ object KafkaStreamingTest {
     val spark = SparkSession
       .builder
       .appName("Spark-Kafka-Integration")
-      .master("local")
       .getOrCreate()
 
     // Create schema
