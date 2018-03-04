@@ -178,7 +178,6 @@
     <orderEntry type="library" name="sbt: org.apache.spark:spark-launcher_2.11:2.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.spark:spark-network-common_2.11:2.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.spark:spark-network-shuffle_2.11:2.2.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.apache.spark:spark-streaming_2.11:2.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.spark:spark-unsafe_2.11:2.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.bouncycastle:bcprov-jdk15on:1.51:jar" level="project" />
     <orderEntry type="library" name="sbt: org.elasticsearch:elasticsearch-spark-20_2.11:6.2.2:jar" level="project" />
