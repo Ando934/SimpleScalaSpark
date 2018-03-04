@@ -30,7 +30,8 @@ object KafkaStreamingTest {
       .option("checkpointLocation", "/user/tandrian/ingestion/checkpoint")
       .option("topic", "test")
       .start()
-      .awaitTermination(1000)
+
+    streamingDataFrame.awaitTermination()
 
     /*// Publish stream to kafka
     streamingDataFrame.selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
