@@ -22,6 +22,12 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: aopalliance:aopalliance:1.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.slf4j:slf4j-log4j12:1.7.21:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.spark:spark-streaming_2.11:2.2.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.spark:spark-streaming-kafka-0-10_2.11:2.2.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.kafka:kafka_2.11:0.10.0.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.yammer.metrics:metrics-core:2.2.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: com.101tec:zkclient:0.8:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.spark:spark-sql_2.11:2.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.spark:spark-sketch_2.11:2.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.spark:spark-catalyst_2.11:2.2.0:jar" level="project" />
@@ -181,14 +187,9 @@
     <orderEntry type="library" name="sbt: org.apache.spark:spark-unsafe_2.11:2.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.bouncycastle:bcprov-jdk15on:1.51:jar" level="project" />
     <orderEntry type="library" name="sbt: org.elasticsearch:elasticsearch-spark-20_2.11:6.2.2:jar" level="project" />
-    <orderEntry type="library" name="sbt: com.101tec:zkclient:0.8:jar" level="project" />
-    <orderEntry type="library" name="sbt: com.yammer.metrics:metrics-core:2.2.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.apache.kafka:kafka_2.11:0.10.0.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.apache.spark:spark-streaming-kafka-0-10_2.11:2.2.0:jar" level="project" />
     <orderEntry type="library" name="sbt: org.apache.spark:spark-tags_2.11:2.2.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.slf4j:slf4j-log4j12:1.7.21:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.apache.kafka:kafka-clients:0.10.0.1:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.slf4j:slf4j-api:1.7.21:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.apache.spark:spark-streaming_2.11:2.2.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.kafka:kafka-clients:0.11.0.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.slf4j:slf4j-api:1.7.25:jar" level="project" />
   </component>
 </module>

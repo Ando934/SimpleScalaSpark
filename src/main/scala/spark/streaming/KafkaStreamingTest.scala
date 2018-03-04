@@ -1,33 +1,51 @@
 package main.scala.spark.streaming
 
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.types._
+
 
 object KafkaStreamingTest {
   def main(args: Array[String]): Unit = {
-   /* val sc = SparkContext.getOrCreate
-    val ssc = new StreamingContext(sc, Seconds(5))
-    val kafkaParams = Map[String, Object](
-      "bootstrap.servers" -> "localhost:9092",
-      "key.deserializer" -> classOf[StringDeserializer],
-      "value.deserializer" -> classOf[StringDeserializer],
-      "group.id" -> "use_a_separate_group_id_for_each_stream",
-      "auto.offset.reset" -> "latest",
-      "enable.auto.commit" -> (false: java.lang.Boolean)
-    )
+    // Create spark session
+    val spark = SparkSession
+      .builder
+      .appName("Spark-Kafka-Integration")
+      .getOrCreate()
 
-    val topics = Array("test")
-    val stream = KafkaUtils.createDirectStream[String, String](
-      ssc,
-      PreferConsistent,
-      Subscribe[String, String](topics, kafkaParams)
-    )
+    // Create schema
+    val mySchema = StructType(Array(
+      StructField("id", IntegerType),
+      StructField("name", DataTypes.StringType),
+      StructField("year", IntegerType),
+      StructField("rating", DoubleType),
+      StructField("duration", IntegerType)
+    ))
 
-    print(stream.map(record => (record.key, record.value)))
+    //Create the Streaming DataFrame
+    val streamingDataFrame = spark.readStream.schema(mySchema).csv("/user/tandrian/ingestion/streaming/")
 
-    ssc.start
+    // Publish stream to kafka
+    streamingDataFrame.selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
+      .writeStream
+      .format("kafka")
+      .option("topic", "test")
+      .option("kafka.bootstrap.servers", "localhost:9092")
+      .option("checkpointLocation", "/home/tandrian/spark/checpoint")
 
-    // the above code is printing out topic details every 5 seconds
-    // until you stop it.
+    // Suscribe stream from Kafka
 
-    ssc.stop(stopSparkContext = false) */
+    val df = spark
+      .readStream
+      .format("kafka")
+      .option("kafka.bootstrap.servers", "localhost:9092")
+      .option("subscribe", "test")
+      .load()
+
+        // Print
+    df.writeStream
+      .format("console")
+      .option("truncate","false")
+      .start()
+      .awaitTermination()
   }
 }
