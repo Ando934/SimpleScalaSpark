@@ -10,6 +10,7 @@ object KafkaStreamingTest {
     val spark = SparkSession
       .builder
       .appName("Spark-Kafka-Integration")
+      .master("local")
       .getOrCreate()
 
     // Create schema
@@ -29,22 +30,30 @@ object KafkaStreamingTest {
       .writeStream
       .format("kafka")
       .option("topic", "test")
-      .option("kafka.bootstrap.servers", "localhost:9092")
-      .option("checkpointLocation", "/home/tandrian/spark/checpoint")
+      .option("kafka.bootstrap.servers", "192.168.33.204:9092")
+      .option("checkpointLocation", "/home/tandrian/spark/checkpoint")
 
     // Suscribe stream from Kafka
 
     val df = spark
       .readStream
       .format("kafka")
-      .option("kafka.bootstrap.servers", "localhost:9092")
+      .option("kafka.bootstrap.servers", "192.168.33.204:9092")
       .option("subscribe", "test")
       .load()
 
-        // Print
-    df.writeStream
+    // Print
+    /*df.writeStream
       .format("console")
       .option("truncate","false")
+      .start()
+      .awaitTermination()*/
+
+    val query = df
+      .writeStream
+      .outputMode("append")
+      .format("parquet")
+      .option("checkpointLocation", "checkpoint")
       .start()
       .awaitTermination()
   }
