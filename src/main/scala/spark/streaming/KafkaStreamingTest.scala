@@ -28,4 +28,11 @@ object KafkaStreamingTest {
   )
 
   print(stream.map(record => (record.key, record.value)))
+
+  ssc.start
+
+  // the above code is printing out topic details every 5 seconds
+  // until you stop it.
+
+  ssc.stop(stopSparkContext = false)
 }
