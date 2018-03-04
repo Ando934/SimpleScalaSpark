@@ -9,6 +9,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 
 object KafkaStreamingTest {
+  def main(args: Array[String]): Unit = {
   val sc = SparkContext.getOrCreate
   val ssc = new StreamingContext(sc, Seconds(5))
   val kafkaParams = Map[String, Object](
@@ -35,4 +36,5 @@ object KafkaStreamingTest {
   // until you stop it.
 
   ssc.stop(stopSparkContext = false)
+}
 }
