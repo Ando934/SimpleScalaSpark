@@ -2,7 +2,7 @@ package main.scala.spark.streaming
 
 /*
  *  Producer Scala Spark
- *   /usr/hdp/2.6.3.0-235/spark2/bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0 --master yarn  --deploy-mode client --driver-memory 512m  --executor-memory 1g --executor-cores 1  --num-executors 1 --class main.scala.spark.streaming.KafkaStreamingTest simplescalaspark_2.11-0.1.jar
+ *   /usr/hdp/2.6.3.0-235/spark2/bin/spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0 --master yarn  --deploy-mode client --driver-memory 512m  --executor-memory 1g --executor-cores 1  --num-executors 1 --class main.scala.spark.streaming.CsvToKafka simplescalaspark_2.11-0.1.jar
  *
  * Consumer shell
  *  kafka-console-consumer.sh --bootstrap-server 0.0.0.0:6667 --topic test
