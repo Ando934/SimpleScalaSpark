@@ -25,6 +25,9 @@ object KafkaStreamingTest {
     //Create the Streaming DataFrame
     val streamingDataFrame = spark.readStream.schema(mySchema).csv("/user/tandrian/ingestion/streaming/")
 
+    streamingDataFrame.printSchema()
+    println(streamingDataFrame.collect())
+
     streamingDataFrame.writeStream
       .format("kafka")
       .option("kafka.bootstrap.servers", "192.168.33.204:9092")
@@ -41,12 +44,12 @@ object KafkaStreamingTest {
 
     // Suscribe stream from Kafka
 
-    val df = spark
+    /*val df = spark
       .readStream
       .format("kafka")
       .option("kafka.bootstrap.servers", "192.168.33.204:9092")
       .option("subscribe", "test")
-      .load()
+      .load()*/
 
 
     // Print
@@ -56,13 +59,13 @@ object KafkaStreamingTest {
       .start()
       .awaitTermination()*/
 
-    val query = df
+    /*val query = df
       .writeStream
       .outputMode("append")
       .format("parquet")
       .option("path", "/user/tandrian/parquet")
       .option("checkpointLocation", "checkpoint")
       .start()
-      .awaitTermination()
+      .awaitTermination()*/
   }
 }
