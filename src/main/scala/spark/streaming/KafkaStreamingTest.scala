@@ -28,7 +28,7 @@ object KafkaStreamingTest {
       .writeStream
       .format("kafka")
       .option("kafka.bootstrap.servers", "192.168.33.204:9092")
-      .option("checkpointLocation", "/home/tandrian/spark/checkpoint")
+      .option("checkpointLocation", "/user/tandrian/ingestion/checkpoint")
       .option("topic", "test")
       .start()
       .awaitTermination(1000)
