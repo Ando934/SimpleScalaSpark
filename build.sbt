@@ -14,6 +14,12 @@ libraryDependencies ++= Seq("org.apache.spark" % "spark-sql_2.11" % "2.2.0",
 
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" % "spark-streaming_2.11" % "2.2.0",
-  "org.apache.spark" % "spark-streaming-kafka-0-10_2.11" % "2.3.0"
+  "org.elasticsearch" % "elasticsearch-spark-20_2.11" % "6.2.2"
 )
+
+libraryDependencies ++= Seq(
+  "org.apache.spark" % "spark-streaming_2.11" % "2.2.0",
+  "org.apache.spark" % "spark-streaming-kafka-0-10_2.11" % "2.1.0"
+)
+
+
