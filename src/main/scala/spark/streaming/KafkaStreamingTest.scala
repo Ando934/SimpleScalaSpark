@@ -27,7 +27,7 @@ object KafkaStreamingTest {
 
     streamingDataFrame.writeStream
       .format("kafka")
-      .option("kafka.bootstrap.servers", "host1:port1,host2:port2")
+      .option("kafka.bootstrap.servers", "192.168.33.204:9092")
       .option("topic", "test")
       .start()
 
