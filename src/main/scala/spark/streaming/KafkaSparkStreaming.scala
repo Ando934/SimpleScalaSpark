@@ -23,7 +23,7 @@ object KafkaSparkStreaming {
       "auto.offset.reset" -> "earliest"
     )
     import org.apache.kafka.common.TopicPartition
-    val offsets = Map(new TopicPartition("topic3", 0) -> 2L)
+    val offsets = Map(new TopicPartition("test", 0) -> 2L)
 
     val dstream = KafkaUtils.createDirectStream[String, String](
       ssc,
