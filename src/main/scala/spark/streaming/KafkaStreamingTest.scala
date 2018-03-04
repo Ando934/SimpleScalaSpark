@@ -33,7 +33,7 @@ object KafkaStreamingTest {
       .selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
       .writeStream
       .format("kafka")
-      .option("kafka.bootstrap.servers", "0.0.0.0:9092")
+      .option("kafka.bootstrap.servers", "0.0.0.0:6667")
       .option("checkpointLocation", "/user/tandrian/ingestion/checkpoint")
       .option("topic", "test")
       .start()
