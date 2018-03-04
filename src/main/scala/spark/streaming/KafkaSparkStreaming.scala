@@ -2,7 +2,7 @@ package main.scala.spark.streaming
 
 import org.apache.spark.SparkContext
 import org.apache.spark.streaming._
-
+import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
 
 object KafkaSparkStreaming {
   def main(args: Array[String]): Unit = {
@@ -11,23 +11,24 @@ object KafkaSparkStreaming {
 
     import org.apache.spark.streaming.kafka010._
 
-    val preferredHosts = LocationStrategies.PreferConsistent
+    //val preferredHosts = LocationStrategies.PreferConsistent
     //val topics = List("topic1", "topic2", "topic3")
     val topics = List("test")
     import org.apache.kafka.common.serialization.StringDeserializer
-    val kafkaParams = Map(
-      "bootstrap.servers" -> "192.168.33.204:9092",
+    val kafkaParams = Map[String, Object](
+      "bootstrap.servers" -> "localhost:9092",
       "key.deserializer" -> classOf[StringDeserializer],
       "value.deserializer" -> classOf[StringDeserializer],
-      "group.id" -> "spark-streaming-notes",
-      "auto.offset.reset" -> "earliest"
+      "group.id" -> "use_a_separate_group_id_for_each_stream",
+      "auto.offset.reset" -> "latest",
+      "enable.auto.commit" -> (false: java.lang.Boolean)
     )
     import org.apache.kafka.common.TopicPartition
     val offsets = Map(new TopicPartition("test", 0) -> 2L)
 
     val dstream = KafkaUtils.createDirectStream[String, String](
       ssc,
-      preferredHosts,
+      PreferConsistent,
       ConsumerStrategies.Subscribe[String, String](topics, kafkaParams, offsets))
 
     dstream.foreachRDD { rdd =>
