@@ -38,8 +38,10 @@ object KafkaToHdfs {
       .option("subscribe", "test")
       .load()
 
-    val df1 = df.selectExpr("CAST(value AS STRING)", "CAST(timestamp AS TIMESTAMP)")
-      .select("data.*", "timestamp")
+    import spark.implicits._
+    val df1 = df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
+      .as[(String, String)]
+
 
     // Print
     df1.writeStream
