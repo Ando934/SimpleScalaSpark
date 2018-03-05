@@ -35,7 +35,7 @@ object KafkaToKafka {
       .readStream
       .format("kafka")
       .option("kafka.bootstrap.servers", "192.168.33.204:6667")
-      .option("subscribe", "ingestion")
+      .option("subscribe", "ingest")
       .load()
 
     import spark.implicits._
