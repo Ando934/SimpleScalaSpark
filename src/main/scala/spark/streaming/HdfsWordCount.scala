@@ -1,11 +1,8 @@
 package main.scala.spark.streaming
 
-import org.apache.spark.SparkConf
-import org.apache.spark.streaming.{Seconds, StreamingContext}
-
 object HdfsWordCount {
   def main(args: Array[String]) {
-    if (args.length < 1) {
+ /*   if (args.length < 1) {
       System.err.println("Usage: HdfsWordCount <directory>")
       System.exit(1)
     }
@@ -23,6 +20,6 @@ object HdfsWordCount {
     //wordCounts.print()
     wordCounts.saveAsTextFiles("/tmp/HdfsCount.txt");
     ssc.start()
-    ssc.awaitTermination()
+    ssc.awaitTermination()*/
   }
 }

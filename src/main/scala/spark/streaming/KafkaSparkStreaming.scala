@@ -3,15 +3,10 @@ package main.scala.spark.streaming
  * /usr/hdp/2.6.3.0-235/spark2/bin/spark-submit --master yarn  --deploy-mode client --driver-memory 512m  --executor-memory 1g --executor-cores 1  --num-executors 1 --class main.scala.spark.streaming.KafkaSparkStreaming simplescalaspark_2.11-0.1.jar
  */
 
-import org.apache.kafka.common.serialization.StringDeserializer
-import org.apache.spark.SparkContext
-import org.apache.spark.streaming._
-import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
-
 
 object KafkaSparkStreaming {
   def main(args: Array[String]): Unit = {
-    val sc = SparkContext.getOrCreate
+ /*   val sc = SparkContext.getOrCreate
     val ssc = new StreamingContext(sc, Seconds(5))
 
     import org.apache.spark.streaming.kafka010._
@@ -50,6 +45,6 @@ object KafkaSparkStreaming {
     // the above code is printing out topic details every 5 seconds
     // until you stop it.
 
-    ssc.stop(stopSparkContext = false)
+    ssc.stop(stopSparkContext = false)*/
   }
 }
