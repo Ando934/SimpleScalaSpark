@@ -36,6 +36,7 @@ object KafkaToHdfs {
       .format("kafka")
       .option("kafka.bootstrap.servers", "192.168.33.204:6667")
       .option("subscribe", "ingest")
+      .option("failOnDataLoss", "false")
       .load()
 
     import spark.implicits._
