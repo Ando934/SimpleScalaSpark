@@ -24,7 +24,7 @@ object KafkaToHdfs {
     val df = spark
       .readStream
       .format("kafka")
-      .option("kafka.bootstrap.servers", "0.0.0.0:6667")
+      .option("kafka.bootstrap.servers", "192.168.33.204:6667")
       .option("subscribe", "test")
       .load()
 
@@ -38,8 +38,10 @@ object KafkaToHdfs {
     val query = df
       .writeStream
       .outputMode("append")
-      .format("parquet")
-      .option("path", "/user/tandrian/parquet")
+      //.format("parquet")
+      //.option("path", "/user/tandrian/parquet")
+      .format("csv")
+      .option("path", "/user/tandrian/archive")
       .option("checkpointLocation", "checkpoint")
       .start()
 
