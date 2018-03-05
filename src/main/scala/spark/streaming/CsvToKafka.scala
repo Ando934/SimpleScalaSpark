@@ -8,13 +8,10 @@ package main.scala.spark.streaming
  *  kafka-console-consumer.sh --bootstrap-server 0.0.0.0:6667 --topic test
  */
 
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.types._
-
 
 object CsvToKafka {
   def main(args: Array[String]): Unit = {
-    // Create spark session
+ /*   // Create spark session
     val spark = SparkSession
       .builder
       .appName("CSV to Kafka")
@@ -46,7 +43,7 @@ object CsvToKafka {
       .option("topic", "test")
       .start()
 
-    df.awaitTermination()
+    df.awaitTermination()*/
 
 /*// Publish stream to kafka
 streamingDataFrame.selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")

@@ -8,13 +8,10 @@ package main.scala.spark.streaming
  *  kafka-console-consumer.sh --bootstrap-server 0.0.0.0:6667 --topic test
  */
 
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.types._
-
 
 object KafkaToHdfs {
   def main(args: Array[String]): Unit = {
-    // Create spark session
+  /*  // Create spark session
     val spark = SparkSession
       .builder
       .appName("Kafka to HDFS")
@@ -57,6 +54,6 @@ object KafkaToHdfs {
       .option("checkpointLocation", "checkpoint")
       .start()
 
-    query.awaitTermination()
+    query.awaitTermination() */
   }
 }
