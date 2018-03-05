@@ -53,6 +53,7 @@ object KafkaToKafka {
       .writeStream
       .format("kafka")
       .option("kafka.bootstrap.servers", "192.168.33.204:6667")
+      .option("checkpointLocation", "/user/tandrian/compute/checkpoint")
       .option("topic", "compute")
       .start()
 
