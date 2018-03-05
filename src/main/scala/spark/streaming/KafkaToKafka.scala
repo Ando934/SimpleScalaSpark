@@ -1,4 +1,4 @@
-package main.scala.spark.streaming
+package spark.streaming
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.types._
@@ -12,12 +12,12 @@ import org.apache.spark.sql.types._
  */
 
 
-object KafkaToHdfs {
+object KafkaToKafka {
   def main(args: Array[String]): Unit = {
     // Create spark session
     val spark = SparkSession
       .builder
-      .appName("Kafka to HDFS")
+      .appName("Kafka to Kafka")
       .getOrCreate()
 
     // Create schema
@@ -51,10 +51,9 @@ object KafkaToHdfs {
 
     val query = df1
       .writeStream
-      .outputMode("append")
-      .format("parquet")
-      .option("path", "/user/tandrian/parquet")
-      .option("checkpointLocation", "checkpoint")
+      .format("kafka")
+      .option("kafka.bootstrap.servers", "192.168.33.204:6667")
+      .option("topic", "compute")
       .start()
 
     query.awaitTermination()
