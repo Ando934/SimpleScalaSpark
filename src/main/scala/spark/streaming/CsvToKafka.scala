@@ -22,7 +22,7 @@ object CsvToKafka {
 
     // Create schema
     val mySchema = StructType(Array(
-      StructField("key", IntegerType),
+      StructField("id", IntegerType),
       StructField("name", DataTypes.StringType),
       StructField("year", IntegerType),
       StructField("rating", DoubleType),
