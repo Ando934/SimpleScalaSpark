@@ -3,7 +3,7 @@ package main.scala.spark.streaming
 object KafkaSparkStreamingToES {
   def main(args: Array[String]) {
 
-    /*//All Configuration declar here
+  /*  //All Configuration declar here
     val conf = new SparkConf()
       .setAppName("kafkawordcount")
       .setMaster("local")
@@ -69,6 +69,6 @@ object KafkaSparkStreamingToES {
     ssc.start()
 
     // This is to ensure that we wait for some time before the background streaming job starts. This will put this cell on hold for 5 times the batchIntervalSeconds.
-    ssc.awaitTerminationOrTimeout(batchIntervalSeconds * 5 * 1000)*/
+    ssc.awaitTerminationOrTimeout(batchIntervalSeconds * 5 * 1000) */
   }
 }

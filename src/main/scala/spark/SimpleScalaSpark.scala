@@ -9,15 +9,15 @@ object SimpleScalaSpark {
 
   def main(args: Array[String]) {
     // get args
-    /*val executionEnvironment = args(0)
+   /* val executionEnvironment = args(0)
     val inputPath = args(1)
     val outputPath = args(2)
     // init props
     val props = ConfigFactory.load()
     //Create a SparkContext to initialize Spark
 
-    val conf = new SparkConf()
-    val sc = new SparkContext(conf)
+    val conf = new SparkConf()()
+    val sc = new SparkContext()(conf)
     conf.setMaster(props.getConfig(executionEnvironment).getString("executionMode"))
     conf.setAppName("Word Count")
 
@@ -31,9 +31,9 @@ object SimpleScalaSpark {
       .reduceByKey(_ + _)
 
     counts.foreach(println)
-    System.out.println("Total words: " + counts.count());
-    //counts.saveAsTextFile("/tmp/shakespeareWordCount1");
-    counts.saveAsTextFile(outputPath);*/
+    System.out.println("Total words: " + counts.count())
+    //counts.saveAsTextFile("/tmp/shakespeareWordCount1")
+    counts.saveAsTextFile(outputPath) */
   }
 
 }

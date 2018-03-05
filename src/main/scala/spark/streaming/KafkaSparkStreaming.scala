@@ -1,4 +1,5 @@
 package main.scala.spark.streaming
+
 /*
  * /usr/hdp/2.6.3.0-235/spark2/bin/spark-submit --master yarn  --deploy-mode client --driver-memory 512m  --executor-memory 1g --executor-cores 1  --num-executors 1 --class main.scala.spark.streaming.KafkaSparkStreaming simplescalaspark_2.11-0.1.jar
  */
@@ -6,8 +7,8 @@ package main.scala.spark.streaming
 
 object KafkaSparkStreaming {
   def main(args: Array[String]): Unit = {
- /*   val sc = SparkContext.getOrCreate
-    val ssc = new StreamingContext(sc, Seconds(5))
+  /*  val sc = SparkContext.getOrCreate
+    val ssc = new StreamingContext()(sc, Seconds(5))
 
     import org.apache.spark.streaming.kafka010._
 
@@ -28,7 +29,7 @@ object KafkaSparkStreaming {
 
     val dstream = KafkaUtils.createDirectStream[String, String](
       ssc,
-      PreferConsistent,
+      PreferConsistentt,
       ConsumerStrategies.Subscribe[String, String](topics, kafkaParams, offsets))
 
 
@@ -45,6 +46,6 @@ object KafkaSparkStreaming {
     // the above code is printing out topic details every 5 seconds
     // until you stop it.
 
-    ssc.stop(stopSparkContext = false)*/
+    ssc.stop(stopSparkContext = false) */
   }
 }
