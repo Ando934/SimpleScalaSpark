@@ -22,11 +22,11 @@ object CsvToKafka {
 
     // Create schema
     val mySchema = StructType(Array(
-      StructField("id", IntegerType),
-      StructField("name", DataTypes.StringType),
-      StructField("year", IntegerType),
-      StructField("rating", DoubleType),
-      StructField("duration", IntegerType)
+      StructField("key", StringType),
+      StructField("value", DataTypes.StringType)
+      //StructField("year", IntegerType),
+      //StructField("rating", DoubleType),
+      //StructField("duration", IntegerType)
     ))
 
     //Create the Streaming DataFrame
@@ -38,8 +38,8 @@ object CsvToKafka {
       .start()*/
 
     val df = streamingDataFrame
-      .selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
-      //.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
+      //.selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
+      .selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
       .writeStream
       .format("kafka")
       .option("kafka.bootstrap.servers", "192.168.33.204:6667")
