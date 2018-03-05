@@ -32,17 +32,17 @@ object CsvToKafka {
     //Create the Streaming DataFrame
     val streamingDataFrame = spark.readStream.schema(mySchema).csv("/user/tandrian/ingestion/streaming/")
 
-    streamingDataFrame.writeStream
+    /*streamingDataFrame.writeStream
       .format("console")
       .option("truncate","false")
-      .start()
+      .start()*/
 
     val df = streamingDataFrame
       //.selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
       .selectExpr("CAST(id AS STRING) AS key", "CAST(value AS STRING)")
       .writeStream
       .format("kafka")
-      .option("kafka.bootstrap.servers", "0.0.0.0:6667")
+      .option("kafka.bootstrap.servers", "192.168.33.204:6667")
       .option("checkpointLocation", "/user/tandrian/ingestion/checkpoint")
       .option("topic", "test")
       .start()
