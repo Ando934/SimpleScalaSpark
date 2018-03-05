@@ -30,7 +30,7 @@ object CsvToKafka {
     ))
 
     //Create the Streaming DataFrame
-  /*  val streamingDataFrame = spark.readStream.schema(mySchema).csv("/user/tandrian/ingestion/streaming/")
+    val streamingDataFrame = spark.readStream.schema(mySchema).csv("/user/tandrian/ingestion/streaming/")
 
     streamingDataFrame.writeStream
       .format("console")
@@ -46,7 +46,7 @@ object CsvToKafka {
       .option("topic", "test")
       .start()
 
-    df.awaitTermination()*/
+    df.awaitTermination()
 
 /*// Publish stream to kafka
 streamingDataFrame.selectExpr("CAST(id AS STRING) AS key", "to_json(struct(*)) AS value")
