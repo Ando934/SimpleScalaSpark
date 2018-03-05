@@ -5,14 +5,11 @@
   */
 package main.scala.spark
 
-import com.typesafe.config.ConfigFactory
-import org.apache.spark.{SparkConf, SparkContext}
-
 object SimpleScalaSpark {
 
   def main(args: Array[String]) {
     // get args
-    val executionEnvironment = args(0)
+    /*val executionEnvironment = args(0)
     val inputPath = args(1)
     val outputPath = args(2)
     // init props
@@ -36,7 +33,7 @@ object SimpleScalaSpark {
     counts.foreach(println)
     System.out.println("Total words: " + counts.count());
     //counts.saveAsTextFile("/tmp/shakespeareWordCount1");
-    counts.saveAsTextFile(outputPath);
+    counts.saveAsTextFile(outputPath);*/
   }
 
 }

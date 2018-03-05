@@ -1,10 +1,5 @@
 package main.scala.spark.streaming
 
-import org.apache.spark.SparkConf
-import org.apache.spark.rdd.RDD
-import org.apache.spark.storage.StorageLevel
-import org.apache.spark.streaming.{Seconds, StreamingContext}
-
 /**
   * Counts words in UTF8 encoded, '\n' delimited text received from the network every second.
   *
@@ -18,7 +13,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
   */
 object NetworkWordCount {
   def main(args: Array[String]) {
-    if (args.length < 2) {
+ /*   if (args.length < 2) {
       System.err.println("Usage: NetworkWordCount <hostname> <port>")
       System.exit(1)
     }
@@ -41,7 +36,7 @@ object NetworkWordCount {
 
     wordCounts.saveAsTextFiles("/tmp/count.txt");
     ssc.start()
-    ssc.awaitTermination()
+    ssc.awaitTermination()*/
   }
 }
 // scalastyle:on println
