@@ -9,6 +9,7 @@ package main.scala.spark.streaming
  */
 
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.types._
 
 
 object KafkaToHdfs {
@@ -19,6 +20,15 @@ object KafkaToHdfs {
       .appName("Kafka to HDFS")
       .getOrCreate()
 
+    // Create schema
+    val mySchema = StructType(Array(
+      StructField("id", IntegerType),
+      StructField("name", DataTypes.StringType),
+      StructField("year", IntegerType),
+      StructField("rating", DoubleType),
+      StructField("duration", IntegerType)
+    ))
+
     // Suscribe stream from Kafka
 
     val df = spark
@@ -28,14 +38,16 @@ object KafkaToHdfs {
       .option("subscribe", "test")
       .load()
 
+    val df1 = df.selectExpr("CAST(value AS STRING)", "CAST(timestamp AS TIMESTAMP)")
+      .select("data.*", "timestamp")
 
     // Print
-    df.writeStream
+    df1.writeStream
       .format("console")
       .option("truncate","false")
       .start()
 
-    val query = df
+    val query = df1
       .writeStream
       .outputMode("append")
       //.format("parquet")
