@@ -22,4 +22,5 @@ libraryDependencies ++= Seq(
   "org.apache.spark" % "spark-streaming-kafka-0-10_2.11" % "2.2.0"
 )
 
+libraryDependencies ++= Seq("org.apache.kafka" % "kafka-streams" % "0.11.0.0")
 

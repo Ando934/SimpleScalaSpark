@@ -1,4 +1,4 @@
-package main.scala.kafka
+package main.scala.kafka.simple
 
 object KafkaProducer extends App {
 

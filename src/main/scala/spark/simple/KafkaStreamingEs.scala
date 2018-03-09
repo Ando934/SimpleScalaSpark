@@ -1,4 +1,4 @@
-package main.scala.spark.streaming
+package main.scala.spark.simple
 
 object KafkaSparkStreamingToES {
   def main(args: Array[String]) {

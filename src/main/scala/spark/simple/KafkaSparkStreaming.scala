@@ -1,4 +1,4 @@
-package main.scala.spark.streaming
+package main.scala.spark.simple
 
 /*
  * /usr/hdp/2.6.3.0-235/spark2/bin/spark-submit --master yarn  --deploy-mode client --driver-memory 512m  --executor-memory 1g --executor-cores 1  --num-executors 1 --class main.scala.spark.streaming.KafkaSparkStreaming simplescalaspark_2.11-0.1.jar
